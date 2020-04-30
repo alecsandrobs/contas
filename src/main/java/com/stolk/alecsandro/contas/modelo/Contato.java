@@ -1,5 +1,8 @@
 package com.stolk.alecsandro.contas.modelo;
 
+import com.google.gson.Gson;
+import com.thoughtworks.xstream.XStream;
+
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -54,5 +57,13 @@ public class Contato extends EntidadeId {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String toXml() {
+        return new XStream().toXML(this);
+    }
+
+    public String toJson() {
+        return new Gson().toJson(this);
     }
 }

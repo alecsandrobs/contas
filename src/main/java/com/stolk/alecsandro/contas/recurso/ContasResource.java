@@ -8,11 +8,12 @@ import javax.ws.rs.core.Response;
 import java.net.URI;
 import java.util.List;
 
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.APPLICATION_XML;
 
 @Path("contas")
-@Produces(APPLICATION_XML)
-@Consumes(APPLICATION_XML)
+@Produces({APPLICATION_XML, APPLICATION_JSON})
+@Consumes({APPLICATION_XML, APPLICATION_JSON})
 public class ContasResource {
 
     private URI getUri(Long... id) {

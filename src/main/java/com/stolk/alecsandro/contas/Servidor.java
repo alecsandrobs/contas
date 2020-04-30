@@ -10,7 +10,7 @@ import java.net.URI;
 public class Servidor {
 
     static HttpServer server;
-    final static String URL = "http://localhost:8080/";
+    final static String URL = "http://localhost:8090/";
     final static String PATH = "com.stolk.alecsandro.contas.recurso";
 
     public static void main(String[] args) throws IOException {

@@ -7,6 +7,8 @@
     <title>Insert title here</title>
 </head>
 <body>
+<c:import url="../login/logout-parcial.jsp"/>
+
 <form action="${linkServletCadastraContato}" method="post">
     Nome: <input type="text" name="nome"/>
     Documento: <input type="text" name="documento"/>

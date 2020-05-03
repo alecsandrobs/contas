@@ -8,6 +8,8 @@
     <title>Insert title here</title>
 </head>
 <body>
+<c:import url="../login/logout-parcial.jsp"/>
+
 <form action="${linkServletEditaLancamento}" method="post">
     Data: <input type="text" name="data" value="${ lancamento.data }"/>
     Fornecedor: <input type="text" name="fornecedor" value="${ lancamento.fornecedor.id }"/>

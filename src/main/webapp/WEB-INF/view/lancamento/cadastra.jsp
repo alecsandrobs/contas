@@ -7,6 +7,8 @@
     <title>Insert title here</title>
 </head>
 <body>
+<c:import url="../login/logout-parcial.jsp"/>
+
 <form action="${linkServletCadastraLancamento}" method="post">
     Data: <input type="text" name="data"/>
     Fornecedor: <input type="text" name="fornecedor"/>

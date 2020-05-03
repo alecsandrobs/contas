@@ -12,6 +12,7 @@
     <title>### Lista de contas ###</title>
 </head>
 <body>
+<c:import url="../login/logout-parcial.jsp"/>
 
 <c:if test="${ not empty conta }">
     Conta ${ conta } cadastrada com sucesso!

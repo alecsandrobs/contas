@@ -1,4 +1,4 @@
-package com.stolk.alecsandro.contas.servlet.conta;
+package com.stolk.alecsandro.contas.servlet.login;
 
 import com.stolk.alecsandro.contas.controle.Acao;
 
@@ -11,9 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/contas")
+@WebServlet("/login")
 public class Servico extends HttpServlet {
-
     protected void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String parametroAcao = request.getParameter("acao");
 
@@ -27,7 +26,7 @@ public class Servico extends HttpServlet {
 
         if (parametroAcao == null) throw new RuntimeException("Ação não pode ser nula.");
 
-        String nomeClasse = "com.stolk.alecsandro.contas.controle.conta." + parametroAcao;
+        String nomeClasse = "com.stolk.alecsandro.contas.controle.login." + parametroAcao;
         String nome;
         try {
             Class classe = Class.forName(nomeClasse);
@@ -39,10 +38,10 @@ public class Servico extends HttpServlet {
 
         String[] nomes = nome.split(":");
         if (nomes[0].equalsIgnoreCase("forward")) {
-            RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/conta/" + nomes[1]);
+            RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/login/" + nomes[1]);
             rd.forward(request, response);
         } else {
-            response.sendRedirect("contas?acao=" + nomes[1]);
+            response.sendRedirect("" + nomes[1]);
         }
     }
 }

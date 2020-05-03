@@ -3,6 +3,7 @@
 <c:url value="/contatos" var="linkServletListaContatos"/>
 <c:url value="/fornecedores" var="linkServletListaFornecedores"/>
 <c:url value="/lancamentos" var="linkServletListaLancamentos"/>
+<c:url value="/obra" var="linkServletListaObra"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,8 @@
     <title>Contas da obra</title>
 </head>
 <body>
+<c:import url="WEB-INF/view/login/logout-parcial.jsp"/>
+
 <h2>Contas pagar e a pagar da obra</h2>
 <p>
 <form action="${linkServletListaContas}" method="get">

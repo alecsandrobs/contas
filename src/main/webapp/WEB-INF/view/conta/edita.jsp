@@ -8,6 +8,8 @@
     <title>Insert title here</title>
 </head>
 <body>
+<c:import url="../login/logout-parcial.jsp"/>
+
 <form action="${linkServletEditaConta}" method="post">
     Banco: <input type="text" name="banco" value="${ conta.banco }"/>
     Agência: <input type="text" name="agencia" value="${ conta.agencia }"/>

@@ -12,6 +12,7 @@
     <title>### Lista de fornecedores ###</title>
 </head>
 <body>
+<c:import url="../login/logout-parcial.jsp"/>
 
 <c:if test="${ not empty fornecedor }">
     Fornecedor ${ fornecedor } cadastrado com sucesso!

@@ -7,6 +7,10 @@
     <title>Insert title here</title>
 </head>
 <body>
+<p>
+    <a href="login?acao=Logout">Sair</a>
+</p>
+
 <form action="${linkServletCadastraConta}" method="post">
     Banco: <input type="text" name="banco"/>
     Agência: <input type="text" name="agencia"/>

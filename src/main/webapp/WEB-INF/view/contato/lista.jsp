@@ -12,6 +12,7 @@
     <title>### Lista de contatos ###</title>
 </head>
 <body>
+<c:import url="../login/logout-parcial.jsp"/>
 
 <c:if test="${ not empty contato }">
     Contato ${ contato } cadastrado com sucesso!

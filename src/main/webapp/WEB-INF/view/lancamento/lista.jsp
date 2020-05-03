@@ -12,6 +12,7 @@
     <title>### Lista de lançamentos ###</title>
 </head>
 <body>
+<c:import url="../login/logout-parcial.jsp"/>
 
 <c:if test="${ not empty lancamento }">
     Lançamento ${ lancamento } cadastrado com sucesso!

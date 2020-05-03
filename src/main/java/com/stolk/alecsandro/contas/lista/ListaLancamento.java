@@ -39,7 +39,7 @@ public class ListaLancamento {
 
     public Lancamento busca(Long id) {
         for (Lancamento lancamento : lancamentos) {
-            if (lancamento.getId() == id) {
+            if (id.equals(lancamento.getId())) {
                 return lancamento;
             }
         }
@@ -52,12 +52,6 @@ public class ListaLancamento {
     }
 
     public void remove(Long id) {
-        Iterator<Lancamento> iterator = lancamentos.iterator();
-        while (iterator.hasNext()) {
-            Lancamento lancamento = iterator.next();
-            if (lancamento.getId() == id) {
-                iterator.remove();
-            }
-        }
+        lancamentos.removeIf(lancamento -> id.equals(lancamento.getId()));
     }
 }

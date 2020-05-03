@@ -35,7 +35,7 @@ public class ListaFornecedor {
 
     public Fornecedor busca(Long id) {
         for (Fornecedor fornecedor : fornecedores) {
-            if (fornecedor.getId() == id) {
+            if (id.equals(fornecedor.getId())) {
                 return fornecedor;
             }
         }
@@ -48,12 +48,6 @@ public class ListaFornecedor {
     }
 
     public void remove(Long id) {
-        Iterator<Fornecedor> iterator = fornecedores.iterator();
-        while (iterator.hasNext()) {
-            Fornecedor fornecedor = iterator.next();
-            if (fornecedor.getId() == id) {
-                iterator.remove();
-            }
-        }
+        fornecedores.removeIf(fornecedor -> id.equals(fornecedor.getId()));
     }
 }

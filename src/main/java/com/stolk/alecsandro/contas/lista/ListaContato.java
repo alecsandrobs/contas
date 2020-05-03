@@ -33,7 +33,7 @@ public class ListaContato {
 
     public Contato busca(Long id) {
         for (Contato contato : contatos) {
-            if (contato.getId() == id) {
+            if (id.equals(contato.getId())) {
                 return contato;
             }
         }
@@ -46,12 +46,6 @@ public class ListaContato {
     }
 
     public void remove(Long id) {
-        Iterator<Contato> iterator = contatos.iterator();
-        while (iterator.hasNext()) {
-            Contato contato = iterator.next();
-            if (contato.getId() == id) {
-                iterator.remove();
-            }
-        }
+        contatos.removeIf(contato -> id.equals(contato.getId()));
     }
 }

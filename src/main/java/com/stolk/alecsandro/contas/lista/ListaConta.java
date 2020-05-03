@@ -33,7 +33,7 @@ public class ListaConta {
 
     public Conta busca(Long id) {
         for (Conta conta : contas) {
-            if (conta.getId() == id) {
+            if (id.equals(conta.getId())) {
                 return conta;
             }
         }
@@ -45,17 +45,9 @@ public class ListaConta {
         contaLista.setBanco(conta.getBanco());
         contaLista.setAgencia(conta.getAgencia());
         contaLista.setNumero(conta.getNumero());
-//        remove(conta.getId());
-//        adiciona(conta);
     }
 
     public void remove(Long id) {
-        Iterator<Conta> iterator = contas.iterator();
-        while (iterator.hasNext()) {
-            Conta conta = iterator.next();
-            if (conta.getId() == id) {
-                iterator.remove();
-            }
-        }
+        contas.removeIf(conta -> id.equals(conta.getId()));
     }
 }

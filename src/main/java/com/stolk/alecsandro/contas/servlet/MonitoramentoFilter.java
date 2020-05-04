@@ -5,7 +5,7 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
-@WebFilter("/obra")
+//@WebFilter("/obra")
 public class MonitoramentoFilter implements Filter {
 
     @Override

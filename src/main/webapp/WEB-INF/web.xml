@@ -21,6 +21,26 @@
         <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
 
+    <filter>
+        <filter-name>AF</filter-name>
+        <filter-class>com.stolk.alecsandro.contas.servlet.AutorizacaoFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>AF</filter-name>
+        <url-pattern>/obra</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>MF</filter-name>
+        <filter-class>com.stolk.alecsandro.contas.servlet.MonitoramentoFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>MF</filter-name>
+        <url-pattern>/obra</url-pattern>
+    </filter-mapping>
+
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>

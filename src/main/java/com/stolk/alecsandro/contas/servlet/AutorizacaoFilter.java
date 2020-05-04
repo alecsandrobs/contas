@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter("/obra")
+//@WebFilter("/obra")
 public class AutorizacaoFilter implements Filter {
 
 

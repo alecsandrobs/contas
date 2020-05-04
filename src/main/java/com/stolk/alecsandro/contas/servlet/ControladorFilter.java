@@ -2,30 +2,29 @@ package com.stolk.alecsandro.contas.servlet;
 
 import com.stolk.alecsandro.contas.controle.Acao;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
+import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-//@WebServlet("/obra")
-public class Servico extends HttpServlet {
+//@WebFilter("/obra")
+public class ControladorFilter implements Filter {
 
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("####### Servico #######");
+
+    @Override
+    public void init(FilterConfig filterConfig) {
+
+    }
+
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
+        System.out.println("####### ControladorFilter #######");
+
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String parametroAcao = request.getParameter("acao");
-
-        /*HttpSession sessao = request.getSession();
-        boolean usuarioLogado = sessao.getAttribute("usuarioLogado") != null;
-        boolean ehLogin = parametroAcao.equals("Login") || parametroAcao.equals("LoginForm");
-        if (!usuarioLogado && !ehLogin) {
-            response.sendRedirect("obra?acao=LoginForm");
-            return;
-        }*/
 
         if (parametroAcao == null) throw new RuntimeException("Ação não pode ser nula.");
 
@@ -50,6 +49,11 @@ public class Servico extends HttpServlet {
                 response.sendRedirect("obra?acao=" + nomes[1]);
             }
         }
+
+    }
+
+    @Override
+    public void destroy() {
 
     }
 }

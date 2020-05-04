@@ -41,6 +41,16 @@
         <url-pattern>/obra</url-pattern>
     </filter-mapping>
 
+    <filter>
+        <filter-name>CF</filter-name>
+        <filter-class>com.stolk.alecsandro.contas.servlet.ControladorFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>CF</filter-name>
+        <url-pattern>/obra</url-pattern>
+    </filter-mapping>
+
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>

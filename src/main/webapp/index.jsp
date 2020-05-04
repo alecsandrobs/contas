@@ -11,24 +11,24 @@
     <title>Contas da obra</title>
 </head>
 <body>
-<c:import url="WEB-INF/view/login/logout-parcial.jsp"/>
+<c:import url="WEB-INF/view/logout-parcial.jsp"/>
 
 <h2>Contas pagar e a pagar da obra</h2>
 <p>
-<form action="${linkServletListaContas}" method="get">
-    <input type="hidden" name="acao" value="Listar"/>
+<form action="${linkServletListaObra}" method="get">
+    <input type="hidden" name="acao" value="ContaListar"/>
     <button type="submit">Contas</button>
 </form>
-<form action="${linkServletListaContatos}" method="get">
-    <input type="hidden" name="acao" value="Listar"/>
+<form action="${linkServletListaObra}" method="get">
+    <input type="hidden" name="acao" value="ContatoListar"/>
     <button type="submit">Contatos</button>
 </form>
-<form action="${linkServletListaFornecedores}" method="get">
-    <input type="hidden" name="acao" value="Listar"/>
+<form action="${linkServletListaObra}" method="get">
+    <input type="hidden" name="acao" value="FornecedorListar"/>
     <button type="submit">Fornecedores</button>
 </form>
-<form action="${linkServletListaLancamentos}" method="get">
-    <input type="hidden" name="acao" value="Listar"/>
+<form action="${linkServletListaObra}" method="get">
+    <input type="hidden" name="acao" value="LancamentoListar"/>
     <button type="submit">Lançamentos</button>
 </form>
 </p>

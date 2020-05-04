@@ -14,35 +14,41 @@ import java.io.IOException;
 @WebServlet("/obra")
 public class Servico extends HttpServlet {
 
-    protected void service(HttpServletRequest request, HttpServletResponse response, Class classe) throws ServletException, IOException, IllegalAccessException, InstantiationException {
-        System.out.println("####### ENTROU #######");
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("####### Servico #######");
 
-        String[] parametros = request.getParameter("acao").split("-");
-        String modelo = parametros[0];
-        String parametroAcao = parametros[1];
+        String parametroAcao = request.getParameter("acao");
 
         HttpSession sessao = request.getSession();
         boolean usuarioLogado = sessao.getAttribute("usuarioLogado") != null;
         boolean ehLogin = parametroAcao.equals("Login") || parametroAcao.equals("LoginForm");
         if (!usuarioLogado && !ehLogin) {
-            response.sendRedirect("login?acao=LoginForm");
+            response.sendRedirect("obra?acao=LoginForm");
             return;
         }
 
         if (parametroAcao == null) throw new RuntimeException("Ação não pode ser nula.");
 
-        System.out.println("Classe: " + classe.getName());
-        System.out.println("Package: " + classe.getPackage());
-
-        Acao acao = (Acao) classe.newInstance();
-        String nome = acao.executar(request, response);
+        String nomeClasse = "com.stolk.alecsandro.contas.controle." + parametroAcao;
+        String nome;
+        try {
+            Class classe = Class.forName(nomeClasse);
+            Acao acao = (Acao) classe.newInstance();
+            nome = acao.executar(request, response);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+            throw new ServletException(e);
+        }
 
         String[] nomes = nome.split(":");
         if (nomes[0].equalsIgnoreCase("forward")) {
-            RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/" + modelo + "/" + nomes[1]);
+            RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/" + nomes[1]);
             rd.forward(request, response);
         } else {
-            response.sendRedirect(modelo + "?acao=" + nomes[1]);
+            if (nomes[1].contains("Menu")) {
+                response.sendRedirect("");
+            } else {
+                response.sendRedirect("obra?acao=" + nomes[1]);
+            }
         }
 
     }

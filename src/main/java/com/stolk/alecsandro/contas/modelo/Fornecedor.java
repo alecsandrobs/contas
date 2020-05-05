@@ -3,15 +3,13 @@ package com.stolk.alecsandro.contas.modelo;
 import com.google.gson.Gson;
 import com.thoughtworks.xstream.XStream;
 
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Iterator;
 import java.util.List;
 
-import static javax.xml.bind.annotation.XmlAccessType.FIELD;
-
-@XmlRootElement
-@XmlAccessorType(FIELD)
+@Entity
+@Table(name = "fornecedores")
 public class Fornecedor extends EntidadeId {
 
     private String nome;

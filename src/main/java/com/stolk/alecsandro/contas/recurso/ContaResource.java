@@ -9,12 +9,11 @@ import java.net.URI;
 import java.util.List;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
-import static javax.ws.rs.core.MediaType.APPLICATION_XML;
 
 @Path("contas")
-@Produces({APPLICATION_XML, APPLICATION_JSON})
-@Consumes({APPLICATION_XML, APPLICATION_JSON})
-public class ContasResource {
+@Produces({APPLICATION_JSON})
+@Consumes({APPLICATION_JSON})
+public class ContaResource {
 
     private URI getUri(Long... id) {
         final String RESOURCE = "contas";
@@ -26,15 +25,16 @@ public class ContasResource {
     }
 
     @GET()
-    public List<Conta> get() {
-        return new ListaConta().busca();
+    public Response get() {
+        List<Conta> contas = new ListaConta().busca();
+        return Response.ok(contas).build();
     }
 
     @GET
     @Path("{id}")
-    public Conta getById(@PathParam("id") Long id) {
+    public Response getById(@PathParam("id") Long id) {
         Conta conta = new ListaConta().busca(id);
-        return conta;
+        return Response.ok(conta).build();
     }
 
     @POST

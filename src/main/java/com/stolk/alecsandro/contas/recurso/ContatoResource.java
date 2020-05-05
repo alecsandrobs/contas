@@ -8,11 +8,11 @@ import javax.ws.rs.core.Response;
 import java.net.URI;
 import java.util.List;
 
-import static javax.ws.rs.core.MediaType.APPLICATION_XML;
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 @Path("contatos")
-@Produces(APPLICATION_XML)
-@Consumes(APPLICATION_XML)
+@Produces(APPLICATION_JSON)
+@Consumes(APPLICATION_JSON)
 public class ContatoResource {
 
     private URI getUri(Long... id) {
@@ -25,15 +25,16 @@ public class ContatoResource {
     }
 
     @GET()
-    public List<Contato> get() {
-        return new ListaContato().busca();
+    public Response get() {
+        List<Contato> contatos = new ListaContato().busca();
+        return Response.ok(contatos).build();
     }
 
     @GET
     @Path("{id}")
-    public Contato getById(@PathParam("id") Long id) {
+    public Response getById(@PathParam("id") Long id) {
         Contato contato = new ListaContato().busca(id);
-        return contato;
+        return Response.ok(contato).build();
     }
 
     @POST

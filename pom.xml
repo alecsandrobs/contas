@@ -14,14 +14,31 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+        <jakartaee>8.0</jakartaee>
+        <junit>3.8.1</junit>
+        <log4j-core>2.11.1</log4j-core>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>${jakartaee}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j-core}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -101,17 +118,6 @@
             <version>4.5.12</version>
         </dependency>
 
-        <!--<dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.5.12</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpcore</artifactId>
-            <version>4.4.13</version>
-        </dependency>-->
-
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-jaxrs</artifactId>
@@ -123,7 +129,22 @@
             <version>2.9.10</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>5.4.15.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.20</version>
+        </dependency>
 
+        <dependency>
+            <groupId>br.com.alura</groupId>
+            <artifactId>alura-lib</artifactId>
+            <version>1.0</version>
+        </dependency>
 
     </dependencies>
     <build>

@@ -1,13 +1,19 @@
 package com.stolk.alecsandro.contas.modelo;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.util.Objects;
 
-//@MappedSuperclass
+import static javax.persistence.GenerationType.IDENTITY;
+
+@MappedSuperclass
 public class EntidadeId implements Serializable {
 
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
     protected Long id;
 
     @Override

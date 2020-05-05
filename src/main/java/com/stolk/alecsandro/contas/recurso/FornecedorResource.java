@@ -10,11 +10,12 @@ import javax.ws.rs.core.Response;
 import java.net.URI;
 import java.util.List;
 
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.APPLICATION_XML;
 
 @Path("fornecedores")
-@Produces(APPLICATION_XML)
-@Consumes(APPLICATION_XML)
+@Produces(APPLICATION_JSON)
+@Consumes(APPLICATION_JSON)
 public class FornecedorResource {
 
     private URI getUri(Long... id) {
@@ -27,15 +28,16 @@ public class FornecedorResource {
     }
 
     @GET()
-    public List<Fornecedor> get() {
-        return new ListaFornecedor().busca();
+    public Response get() {
+        List<Fornecedor> fornecedores = new ListaFornecedor().busca();
+        return Response.ok(fornecedores).build();
     }
 
     @GET
     @Path("{id}")
-    public Fornecedor getById(@PathParam("id") Long id) {
+    public Response getById(@PathParam("id") Long id) {
         Fornecedor fornecedor = new ListaFornecedor().busca(id);
-        return fornecedor;
+        return Response.ok(fornecedor).build();
     }
 
     @POST
@@ -68,7 +70,7 @@ public class FornecedorResource {
 
     @PUT
     @Path("{fornecedorId}/contatos/{id}")
-    public Response putContato(Contato contato, @PathParam("{fornecedorId}") Long fornecedorId, @PathParam("id") Long id) {
+    public Response putContato(Contato contato, @PathParam("fornecedorId") Long fornecedorId, @PathParam("id") Long id) {
         Fornecedor fornecedor = new ListaFornecedor().busca(fornecedorId);
         fornecedor.removeContato(id);
         fornecedor.adicionaContato(contato);

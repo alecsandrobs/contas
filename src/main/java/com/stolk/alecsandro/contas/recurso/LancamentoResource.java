@@ -8,11 +8,12 @@ import javax.ws.rs.core.Response;
 import java.net.URI;
 import java.util.List;
 
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.APPLICATION_XML;
 
 @Path("lancamentos")
-@Produces(APPLICATION_XML)
-@Consumes(APPLICATION_XML)
+@Produces(APPLICATION_JSON)
+@Consumes(APPLICATION_JSON)
 public class LancamentoResource {
 
     private URI getUri(Long... id) {
@@ -25,15 +26,16 @@ public class LancamentoResource {
     }
 
     @GET()
-    public List<Lancamento> get() {
-        return new ListaLancamento().busca();
+    public Response get() {
+        List<Lancamento> lancamentos = new ListaLancamento().busca();
+        return Response.ok(lancamentos).build();
     }
 
     @GET
     @Path("{id}")
-    public Lancamento getById(@PathParam("id") Long id) {
+    public Response getById(@PathParam("id") Long id) {
         Lancamento lancamento = new ListaLancamento().busca(id);
-        return lancamento;
+        return Response.ok(lancamento).build();
     }
 
     @POST

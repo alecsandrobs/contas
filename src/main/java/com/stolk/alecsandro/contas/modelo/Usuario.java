@@ -1,5 +1,10 @@
 package com.stolk.alecsandro.contas.modelo;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "usuarios")
 public class Usuario extends EntidadeId {
 
     private String login;

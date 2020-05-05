@@ -3,14 +3,12 @@ package com.stolk.alecsandro.contas.modelo;
 import com.google.gson.Gson;
 import com.thoughtworks.xstream.XStream;
 
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
-import static javax.xml.bind.annotation.XmlAccessType.FIELD;
-
-@XmlRootElement
-@XmlAccessorType(FIELD)
+@Entity
+@Table(name = "lancamentos")
 public class Lancamento extends EntidadeId {
 
     private LocalDate data;

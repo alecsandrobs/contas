@@ -15,7 +15,7 @@
     Senha: <input type="password" name="senha"/>
 
     <input type="hidden" name="acao" value="Login">
-    <input type="submit"/>
+    <button type="submit">Entrar</button>
 </form>
 
 </body>

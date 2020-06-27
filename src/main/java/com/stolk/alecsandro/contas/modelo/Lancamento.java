@@ -1,6 +1,10 @@
 package com.stolk.alecsandro.contas.modelo;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.google.gson.Gson;
+import com.stolk.alecsandro.contas.util.LocalDateDeserializer;
+import com.stolk.alecsandro.contas.util.LocalDateSerializer;
 import com.thoughtworks.xstream.XStream;
 
 import javax.persistence.Entity;
@@ -11,12 +15,19 @@ import java.time.LocalDate;
 @Table(name = "lancamentos")
 public class Lancamento extends EntidadeId {
 
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate data;
+
     private Fornecedor fornecedor;
     private Conta conta;
     private TipoLancamento tipo;
     private Double valor;
+
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate pagamento;
+
     private String observacoes;
 
     public Lancamento() {
